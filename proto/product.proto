@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package product;
+
+option go_package = "learn-grpc/product";
+
+enum ProductStatus {
+  ACTIVE = 0;
+  INACTIVE = 1;
+}
+
+message Product {
+  string id = 1;
+  string name = 2;
+  int32 price = 3;
+  ProductStatus status = 4; 
+}
+
+message GetProductRequest {
+  string id = 1;
+}
+
+message GetProductResponse {
+  Product product = 1;
+}
+
+message GetProductsRequest {
+  int32 page = 1;
+  int32 limit = 2;
+}
+
+message GetProductsResponse {
+  repeated Product products = 1;
+  int32 totalProducts = 2;
+}
